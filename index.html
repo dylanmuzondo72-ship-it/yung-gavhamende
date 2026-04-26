@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runna Rulez | Official Portfolio</title>
+  <meta name="description" content="Official portfolio website for Zimbabwean artist Runna Rulez. Music, videos, bookings, awards, gallery and contact information." />
+  <meta name="keywords" content="Runna Rulez, Zimbabwe music, Zim Hip Hop, Skunyu, Dumb Shit, artist website, bookings" />
+  <meta property="og:title" content="Runna Rulez | Official Portfolio" />
+  <meta property="og:description" content="Music, videos, bookings, awards and gallery for Runna Rulez." />
+  <meta property="og:image" content="./assets/hero.jpg" />
+  <meta name="theme-color" content="#e32120" />
+
+  <style>
+    :root {
+      --bg: #06070a;
+      --panel: #101116;
+      --panel-2: #181a22;
+      --red: #ef2d24;
+      --red-dark: #8c120e;
+      --white: #f7f7f2;
+      --muted: #a9a9b5;
+      --line: rgba(255,255,255,.12);
+      --glow: rgba(239,45,36,.35);
+      --max: 1180px;
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(239,45,36,.24), transparent 32rem),
+        radial-gradient(circle at 20% 35%, rgba(255,255,255,.05), transparent 26rem),
+        var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .08;
+      z-index: 999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    header {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(6,7,10,.66);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--red), #ff7b2f);
+      color: #08080a;
+      font-weight: 1000;
+    }
+    .nav-links { display: flex; gap: 18px; align-items: center; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--white); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 13px 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--white);
+      font-weight: 800;
+      transition: .25s ease;
+      cursor: pointer;
+      min-height: 46px;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.28); }
+    .btn-red {
+      background: linear-gradient(135deg, var(--red), #ff6b2b);
+      color: #09090b;
+      border: none;
+      box-shadow: 0 12px 42px var(--glow);
+    }
+    .btn-dark { background: rgba(0,0,0,.4); }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      position: relative;
+      padding: 120px 0 48px;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(6,7,10,.98) 0%, rgba(6,7,10,.76) 37%, rgba(6,7,10,.25) 65%, rgba(6,7,10,.86) 100%),
+        linear-gradient(0deg, rgba(6,7,10,1) 0%, rgba(6,7,10,.25) 46%, rgba(6,7,10,.75) 100%),
+        url("./assets/hero.jpg") center right / cover no-repeat;
+      z-index: -2;
+    }
+    .hero::after {
+      content: "RUNNA RULEZ";
+      position: absolute;
+      left: -2vw;
+      bottom: 8vh;
+      font-size: clamp(4rem, 16vw, 16rem);
+      font-weight: 1000;
+      letter-spacing: -.08em;
+      line-height: .8;
+      color: rgba(255,255,255,.035);
+      z-index: -1;
+      white-space: nowrap;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 30px;
+      align-items: end;
+    }
+    .eyebrow {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-weight: 1000;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(4rem, 12vw, 10.5rem);
+      line-height: .78;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+      max-width: 740px;
+      text-shadow: 0 24px 70px rgba(0,0,0,.75);
+    }
+    .subtitle {
+      margin-top: 26px;
+      max-width: 560px;
+      color: #d8d8de;
+      font-size: clamp(1.04rem, 2vw, 1.3rem);
+      line-height: 1.6;
+    }
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero-card {
+      justify-self: end;
+      width: min(100%, 430px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+      backdrop-filter: blur(20px);
+      padding: 18px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+    }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px;
+      background: rgba(0,0,0,.28);
+    }
+    .stat strong { display: block; font-size: 20px; }
+    .stat span { color: var(--muted); font-size: 12px; }
+
+    section { padding: 92px 0; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    h2 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+    .section-head p { max-width: 470px; color: var(--muted); line-height: 1.7; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      padding: 22px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.22);
+    }
+    .card h3 { font-size: 22px; margin-bottom: 8px; }
+    .card p { color: var(--muted); line-height: 1.65; }
+
+    .player-wrap {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .cover {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 420px;
+      border: 1px solid var(--line);
+      background: url("./assets/stage-2.jpg") center / cover;
+      position: relative;
+    }
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(6,7,10,.92), rgba(6,7,10,.08));
+    }
+    .cover-label {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2;
+    }
+    .music-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 85% 10%, rgba(239,45,36,.20), transparent 24rem),
+        rgba(255,255,255,.05);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .track-title { font-size: clamp(2rem, 5vw, 4.6rem); line-height: .92; letter-spacing: -.06em; text-transform: uppercase; }
+    .player {
+      margin-top: 28px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(0,0,0,.34);
+      border: 1px solid var(--line);
+    }
+    .controls { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; }
+    .play {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--red), #ff7b2f);
+      color: #050507;
+      font-size: 18px;
+      font-weight: 1000;
+      cursor: pointer;
+    }
+    .bar { height: 10px; background: rgba(255,255,255,.12); border-radius: 99px; overflow: hidden; cursor: pointer; }
+    .fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--red), #ff8a3d); border-radius: inherit; }
+    .time { color: var(--muted); font-size: 13px; min-width: 42px; text-align: right; }
+    .stream-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .award-img {
+      min-height: 560px;
+      border-radius: var(--radius);
+      background: url("./assets/award.jpg") center / cover;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+    }
+    .award-content { display: grid; gap: 16px; }
+    .award-badge {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: rgba(255,255,255,.055);
+    }
+    .award-badge strong { font-size: 36px; display: block; letter-spacing: -.04em; }
+    .award-badge span { color: var(--muted); line-height: 1.7; display: block; margin-top: 8px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .shot {
+      min-height: 360px;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.08) contrast(1.05);
+    }
+    .shot:nth-child(1) { grid-column: span 4; background-image: url("./assets/stage-1.jpg"); }
+    .shot:nth-child(2) { grid-column: span 4; background-image: url("./assets/stage-2.jpg"); }
+    .shot:nth-child(3) { grid-column: span 4; background-image: url("./assets/fit-red.jpg"); }
+    .shot:nth-child(4) { grid-column: span 6; background-image: url("./assets/rain-shot.jpg"); }
+    .shot:nth-child(5) { grid-column: span 6; background-image: url("./assets/court-shot.jpg"); }
+
+    .contact-box {
+      border-radius: 38px;
+      padding: clamp(28px, 6vw, 70px);
+      background:
+        linear-gradient(135deg, rgba(239,45,36,.92), rgba(83,11,8,.94)),
+        url("./assets/rain-shot.jpg") center / cover;
+      background-blend-mode: multiply;
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 34px 100px rgba(239,45,36,.20);
+    }
+    .contact-box h2 { max-width: 800px; }
+    .contact-box p { max-width: 650px; color: rgba(255,255,255,.82); line-height: 1.7; margin-top: 18px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .player-wrap, .award-grid { grid-template-columns: 1fr; }
+      .hero-card { justify-self: start; }
+      .cards { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 14px; }
+      .award-img { min-height: 420px; }
+      .shot, .shot:nth-child(n) { grid-column: span 12; min-height: 330px; }
+    }
+
+    @media (max-width: 520px) {
+      .container, .nav { width: min(100% - 20px, var(--max)); }
+      header { top: 10px; }
+      .hero { padding-top: 96px; }
+      h1 { font-size: 4.2rem; }
+      .btn { width: 100%; }
+      .hero-actions, .stream-buttons, .contact-actions { width: 100%; }
+      .mini-stats { grid-template-columns: 1fr; }
+      .cover { min-height: 320px; }
+      .controls { grid-template-columns: auto 1fr; }
+      .time { grid-column: 2; text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="Runna Rulez home">
+        <span class="brand-mark">R</span>
+        <span>Runna Rulez</span>
+      </a>
+      <div class="nav-links">
+        <a href="#music">Music</a>
+        <a href="#awards">Awards</a>
+        <a href="#videos">Videos</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Bookings</a>
+      </div>
+      <a class="btn btn-red" href="https://wa.me/263788179182" target="_blank" rel="noopener">Book Now</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Zimbabwe New-Wave Hip-Hop</p>
+          <h1>Runna<br>Rulez</h1>
+          <p class="subtitle">Official portfolio hub for music, videos, bookings, shows, awards and the movement behind the sound.</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="#music">Play Dumb Sh!t</a>
+            <a class="btn btn-dark" href="https://www.youtube.com/@RunnaRulez" target="_blank" rel="noopener">Watch Videos</a>
+            <a class="btn btn-dark" href="https://open.spotify.com/artist/75xd1QbCFhNPbPpbfR8WSM" target="_blank" rel="noopener">Spotify</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <p class="eyebrow">Artist Profile</p>
+          <h3>Built for fans, bookings and brand control.</h3>
+          <p style="color: var(--muted); line-height: 1.7; margin-top: 10px;">
+            The one-page official base for Runna Rulez: stream the music, watch the visuals, contact bookings and view the gallery.
+          </p>
+          <div class="mini-stats">
+            <div class="stat"><strong>90K+</strong><span>Instagram audience</span></div>
+            <div class="stat"><strong>54K+</strong><span>YouTube channel</span></div>
+            <div class="stat"><strong>2025</strong><span>Dumb Sh!t single</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About<br>Runna</h2>
+          <p>Runna Rulez represents the raw, stylish and restless side of Zimbabwe’s new-wave hip-hop scene. The brand is loud, fashion-heavy, performance-ready and made for young fans who want energy, not sleepy biography paragraphs written by someone’s uncle.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Sound</h3>
+            <p>Trap, hip-hop and new-school Zimbabwean street energy with catchy hooks, hard drums and visual-first presentation.</p>
+          </article>
+          <article class="card">
+            <h3>Brand</h3>
+            <p>Red, black, white, streetwear silhouettes, stage shots and high-contrast visuals that make the artist instantly recognizable.</p>
+          </article>
+          <article class="card">
+            <h3>Business</h3>
+            <p>Centralized links, bookings and music discovery so fans and promoters stop hunting through scattered social posts like digital archaeologists.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="music">
+      <div class="container">
+        <div class="section-head">
+          <h2>Music<br>Player</h2>
+          <p>Featured track: <strong>DUMB Sh!t (like dat)</strong>. Replace this audio file any time in the assets folder without rebuilding the whole site, because apparently efficiency still matters.</p>
+        </div>
+
+        <div class="player-wrap">
+          <div class="cover">
+            <div class="cover-label">
+              <p class="eyebrow">Featured Track</p>
+              <h3>DUMB Sh!t<br><span style="color: var(--muted); font-weight: 500;">like dat</span></h3>
+            </div>
+          </div>
+
+          <div class="music-panel">
+            <div>
+              <p class="eyebrow">Now Playing</p>
+              <h2 class="track-title">DUMB<br>Sh!t</h2>
+              <p style="color: var(--muted); line-height: 1.7; margin-top: 14px;">
+                Official track preview and music hub for Runna Rulez. Stream across platforms or contact for bookings below.
+              </p>
+            </div>
+
+            <div>
+              <div class="player">
+                <audio id="audio" preload="metadata">
+                  <source src="./assets/runna-rulez-dumb-shit.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+                <div class="controls">
+                  <button class="play" id="playBtn" aria-label="Play track">▶</button>
+                  <div class="bar" id="bar" aria-label="Track progress">
+                    <div class="fill" id="fill"></div>
+                  </div>
+                  <div class="time" id="time">0:00</div>
+                </div>
+              </div>
+
+              <div class="stream-buttons">
+                <a class="btn btn-red" href="https://www.youtube.com/watch?v=oLrqiHWUxXA" target="_blank" rel="noopener">YouTube Video</a>
+                <a class="btn" href="https://open.spotify.com/artist/75xd1QbCFhNPbPpbfR8WSM" target="_blank" rel="noopener">Spotify</a>
+                <a class="btn" href="https://music.apple.com/zw/artist/runna-rulez/1651906280" target="_blank" rel="noopener">Apple Music</a>
+                <a class="btn" href="https://music.youtube.com/channel/UC3_gK0DockIqSOBLkxhJYQg" target="_blank" rel="noopener">YouTube Music</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="container">
+        <div class="section-head">
+          <h2>Awards<br>& Motion</h2>
+          <p>Use the award image as proof of momentum. People trust artists faster when the visuals say “movement” before the bio starts begging for attention.</p>
+        </div>
+
+        <div class="award-grid">
+          <div class="award-img" role="img" aria-label="Runna Rulez sitting beside an award trophy"></div>
+          <div class="award-content">
+            <div class="award-badge">
+              <strong>Zim Hip Hop Awards</strong>
+              <span>Visual space for award highlights, nominations, wins, show appearances and major career moments.</span>
+            </div>
+            <div class="award-badge">
+              <strong>Performance Ready</strong>
+              <span>Use this section to list live shows, school tours, club appearances and press features.</span>
+            </div>
+            <div class="award-badge">
+              <strong>Young Government</strong>
+              <span>Connected to the wider movement and fan base through Instagram, music videos and live performance culture.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Videos</h2>
+          <p>Embedded official visuals from YouTube. No need to trap the audience in screenshot land like civilization has failed us completely.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>DUMB Sh!t</h3>
+            <p style="margin-bottom: 14px;">Official music video.</p>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; border: 1px solid var(--line);">
+              <iframe src="https://www.youtube.com/embed/oLrqiHWUxXA" title="Runna Rulez DUMB Sh!t" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
+            </div>
+          </article>
+          <article class="card">
+            <h3>YouTube Channel</h3>
+            <p>Latest videos, freestyles, singles and visuals.</p>
+            <a class="btn btn-red" style="margin-top: 20px;" href="https://www.youtube.com/@RunnaRulez" target="_blank" rel="noopener">Open Channel</a>
+          </article>
+          <article class="card">
+            <h3>Instagram Reels</h3>
+            <p>Behind the scenes, promos, fashion shots and performance clips.</p>
+            <a class="btn btn-red" style="margin-top: 20px;" href="https://www.instagram.com/runna_rulez_music/reels/" target="_blank" rel="noopener">Open Reels</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <h2>Gallery</h2>
+          <p>Performance, award and streetwear imagery. These shots are the visual language of the brand: red, black, night, stage, motion.</p>
+        </div>
+        <div class="gallery">
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <p class="eyebrow" style="color: #fff;">Bookings & Inquiries</p>
+          <h2>Book Runna Rulez for shows, features, appearances and collaborations.</h2>
+          <p>For inquiries and bookings, use WhatsApp or email. This section turns scattered interest into a direct business funnel, which is apparently still a rare innovation in artist marketing.</p>
+
+          <div class="contact-actions">
+            <a class="btn btn-dark" href="https://wa.me/263788179182" target="_blank" rel="noopener">WhatsApp +263 788 179 182</a>
+            <a class="btn btn-dark" href="mailto:runnarulezofficial@gmail.com">runnarulezofficial@gmail.com</a>
+            <a class="btn btn-dark" href="https://www.instagram.com/runna_rulez_music/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn btn-dark" href="https://open.spotify.com/artist/75xd1QbCFhNPbPpbfR8WSM" target="_blank" rel="noopener">Spotify</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Runna Rulez. All rights reserved.</span>
+      <span>Website by Core Web Systems</span>
+    </div>
+  </footer>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    const bar = document.getElementById('bar');
+    const fill = document.getElementById('fill');
+    const time = document.getElementById('time');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function format(seconds) {
+      if (!Number.isFinite(seconds)) return '0:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = '❚❚';
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶';
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const percent = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      fill.style.width = `${percent}%`;
+      time.textContent = format(audio.currentTime);
+    });
+
+    audio.addEventListener('error', () => {
+      time.textContent = 'Audio missing';
+      playBtn.textContent = '!';
+      console.error('Audio failed to load. Keep index.html beside the assets folder.');
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.textContent = '▶';
+      fill.style.width = '0%';
+      audio.currentTime = 0;
+    });
+
+    bar.addEventListener('click', (e) => {
+      const rect = bar.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      if (audio.duration) audio.currentTime = Math.max(0, Math.min(audio.duration * ratio, audio.duration));
+    });
+  </script>
+</body>
+</html>
