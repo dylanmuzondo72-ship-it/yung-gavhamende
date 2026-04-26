@@ -1,19 +1,16 @@
-RUNNA RULEZ WEBSITE - FIXED EXPORT
+RUNNA RULEZ WEBSITE - UPDATED EXPORT
 
-IMPORTANT:
-Do not open only index.html after downloading.
-Keep the folder like this:
+Upload the entire folder to GitHub or Netlify, keeping this structure:
 
 index.html
 assets/
   hero.jpg
   award.jpg
   runna-rulez-dumb-shit.mp3
-  other images...
+  stage-1.jpg
+  stage-2.jpg
+  fit-red.jpg
+  rain-shot.jpg
+  court-shot.jpg
 
-If you upload to Netlify:
-1. Open the ZIP.
-2. Upload BOTH index.html and the assets folder.
-3. Or drag the whole unzipped folder into Netlify.
-
-If images/audio do not show, it means the assets folder was not uploaded beside index.html.
+Do not upload index.html alone. The images and audio need the assets folder beside it.

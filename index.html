@@ -130,7 +130,7 @@
       background:
         linear-gradient(90deg, rgba(6,7,10,.98) 0%, rgba(6,7,10,.76) 37%, rgba(6,7,10,.25) 65%, rgba(6,7,10,.86) 100%),
         linear-gradient(0deg, rgba(6,7,10,1) 0%, rgba(6,7,10,.25) 46%, rgba(6,7,10,.75) 100%),
-        url("./assets/hero.jpg") center right / cover no-repeat;
+        url("./assets/hero.jpg") center 28% / cover no-repeat;
       z-index: -2;
     }
     .hero::after {
@@ -324,15 +324,23 @@
       border-radius: 26px;
       overflow: hidden;
       border: 1px solid var(--line);
-      background-size: cover;
-      background-position: center;
+      background: rgba(255,255,255,.04);
       filter: saturate(1.08) contrast(1.05);
+      position: relative;
     }
-    .shot:nth-child(1) { grid-column: span 4; background-image: url("./assets/stage-1.jpg"); }
-    .shot:nth-child(2) { grid-column: span 4; background-image: url("./assets/stage-2.jpg"); }
-    .shot:nth-child(3) { grid-column: span 4; background-image: url("./assets/fit-red.jpg"); }
-    .shot:nth-child(4) { grid-column: span 6; background-image: url("./assets/rain-shot.jpg"); }
-    .shot:nth-child(5) { grid-column: span 6; background-image: url("./assets/court-shot.jpg"); }
+    .shot img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+    .shot:nth-child(1) { grid-column: span 4; }
+    .shot:nth-child(2) { grid-column: span 4; }
+    .shot:nth-child(3) { grid-column: span 4; }
+    .shot:nth-child(4) { grid-column: span 6; }
+    .shot:nth-child(5) { grid-column: span 6; }
+    .shot:nth-child(4) img, .shot:nth-child(5) img { object-position: center 25%; }
 
     .contact-box {
       border-radius: 38px;
@@ -363,7 +371,8 @@
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .award-img { min-height: 420px; }
-      .shot, .shot:nth-child(n) { grid-column: span 12; min-height: 330px; }
+      .shot, .shot:nth-child(n) { grid-column: span 12; min-height: 430px; }
+      .shot img { object-position: center 16%; }
     }
 
     @media (max-width: 520px) {
@@ -407,7 +416,7 @@
         <div>
           <p class="eyebrow">Zimbabwe New-Wave Hip-Hop</p>
           <h1>Runna<br>Rulez</h1>
-          <p class="subtitle">Official portfolio hub for music, videos, bookings, shows, awards and the movement behind the sound.</p>
+          <p class="subtitle">The official online home for Runna Rulez, bringing his music, visuals, bookings, awards and fan links into one clean destination.</p>
           <div class="hero-actions">
             <a class="btn btn-red" href="#music">Play Dumb Sh!t</a>
             <a class="btn btn-dark" href="https://www.youtube.com/@RunnaRulez" target="_blank" rel="noopener">Watch Videos</a>
@@ -417,9 +426,9 @@
 
         <div class="hero-card">
           <p class="eyebrow">Artist Profile</p>
-          <h3>Built for fans, bookings and brand control.</h3>
+          <h3>Music, visuals and bookings in one place.</h3>
           <p style="color: var(--muted); line-height: 1.7; margin-top: 10px;">
-            The one-page official base for Runna Rulez: stream the music, watch the visuals, contact bookings and view the gallery.
+            Runna Rulez is part of Zimbabwe’s rising new-wave sound, combining street energy, bold visuals and performance-focused music for a growing fan base.
           </p>
           <div class="mini-stats">
             <div class="stat"><strong>90K+</strong><span>Instagram audience</span></div>
@@ -434,20 +443,20 @@
       <div class="container">
         <div class="section-head">
           <h2>About<br>Runna</h2>
-          <p>Runna Rulez represents the raw, stylish and restless side of Zimbabwe’s new-wave hip-hop scene. The brand is loud, fashion-heavy, performance-ready and made for young fans who want energy, not sleepy biography paragraphs written by someone’s uncle.</p>
+          <p>Runna Rulez is a Zimbabwean new-wave hip-hop artist known for energetic delivery, strong visual identity and a streetwear-influenced image. His work connects music, performance, fashion and youth culture into a brand built for fans, stages and collaborations.</p>
         </div>
         <div class="cards">
           <article class="card">
             <h3>Sound</h3>
-            <p>Trap, hip-hop and new-school Zimbabwean street energy with catchy hooks, hard drums and visual-first presentation.</p>
+            <p>A fusion of trap, hip-hop and Zimbabwean street energy, driven by catchy hooks, hard drums and confident vocal delivery.</p>
           </article>
           <article class="card">
             <h3>Brand</h3>
-            <p>Red, black, white, streetwear silhouettes, stage shots and high-contrast visuals that make the artist instantly recognizable.</p>
+            <p>A bold identity shaped by red, black and white palettes, streetwear styling, stage imagery and high-contrast visuals.</p>
           </article>
           <article class="card">
             <h3>Business</h3>
-            <p>Centralized links, bookings and music discovery so fans and promoters stop hunting through scattered social posts like digital archaeologists.</p>
+            <p>A direct hub for promoters, collaborators and fans to access music, videos, social links and booking information quickly.</p>
           </article>
         </div>
       </div>
@@ -457,7 +466,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Music<br>Player</h2>
-          <p>Featured track: <strong>DUMB Sh!t (like dat)</strong>. Replace this audio file any time in the assets folder without rebuilding the whole site, because apparently efficiency still matters.</p>
+          <p>Featured track: <strong>DUMB Sh!t (like dat)</strong>. Press play to preview the song, then use the streaming buttons to continue on major platforms.</p>
         </div>
 
         <div class="player-wrap">
@@ -473,7 +482,7 @@
               <p class="eyebrow">Now Playing</p>
               <h2 class="track-title">DUMB<br>Sh!t</h2>
               <p style="color: var(--muted); line-height: 1.7; margin-top: 14px;">
-                Official track preview and music hub for Runna Rulez. Stream across platforms or contact for bookings below.
+                Listen to the featured Runna Rulez track directly on the site, then stream more music through Spotify, Apple Music and YouTube Music.
               </p>
             </div>
 
@@ -508,7 +517,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Awards<br>& Motion</h2>
-          <p>Use the award image as proof of momentum. People trust artists faster when the visuals say “movement” before the bio starts begging for attention.</p>
+          <p>Awards, public recognition and live moments show the growth behind the Runna Rulez movement.</p>
         </div>
 
         <div class="award-grid">
@@ -516,15 +525,15 @@
           <div class="award-content">
             <div class="award-badge">
               <strong>Zim Hip Hop Awards</strong>
-              <span>Visual space for award highlights, nominations, wins, show appearances and major career moments.</span>
+              <span>A space for award highlights, nominations, wins, show appearances and major career moments.</span>
             </div>
             <div class="award-badge">
               <strong>Performance Ready</strong>
-              <span>Use this section to list live shows, school tours, club appearances and press features.</span>
+              <span>Available for live shows, school tours, club appearances, features, collaborations and press opportunities.</span>
             </div>
             <div class="award-badge">
               <strong>Young Government</strong>
-              <span>Connected to the wider movement and fan base through Instagram, music videos and live performance culture.</span>
+              <span>Connected to a growing fan base through Instagram, official videos, live performance and youth culture.</span>
             </div>
           </div>
         </div>
@@ -535,7 +544,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Videos</h2>
-          <p>Embedded official visuals from YouTube. No need to trap the audience in screenshot land like civilization has failed us completely.</p>
+          <p>Watch official visuals, music videos and online content from Runna Rulez.</p>
         </div>
         <div class="cards">
           <article class="card">
@@ -563,14 +572,14 @@
       <div class="container">
         <div class="section-head">
           <h2>Gallery</h2>
-          <p>Performance, award and streetwear imagery. These shots are the visual language of the brand: red, black, night, stage, motion.</p>
+          <p>Performance, award and streetwear imagery showing the visual identity of Runna Rulez: red, black, night, stage and motion.</p>
         </div>
         <div class="gallery">
-          <div class="shot"></div>
-          <div class="shot"></div>
-          <div class="shot"></div>
-          <div class="shot"></div>
-          <div class="shot"></div>
+          <div class="shot"><img src="./assets/stage-1.jpg" alt="Runna Rulez performing on stage" loading="lazy"></div>
+          <div class="shot"><img src="./assets/stage-2.jpg" alt="Runna Rulez performing live" loading="lazy"></div>
+          <div class="shot"><img src="./assets/fit-red.jpg" alt="Runna Rulez in red outfit on court" loading="lazy"></div>
+          <div class="shot"><img src="./assets/rain-shot.jpg" alt="Runna Rulez seated in the rain holding an umbrella" loading="lazy"></div>
+          <div class="shot"><img src="./assets/court-shot.jpg" alt="Runna Rulez on a tennis court at night" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -580,7 +589,7 @@
         <div class="contact-box">
           <p class="eyebrow" style="color: #fff;">Bookings & Inquiries</p>
           <h2>Book Runna Rulez for shows, features, appearances and collaborations.</h2>
-          <p>For inquiries and bookings, use WhatsApp or email. This section turns scattered interest into a direct business funnel, which is apparently still a rare innovation in artist marketing.</p>
+          <p>For bookings, features, appearances, collaborations and business inquiries, contact the team directly through WhatsApp, email or Instagram.</p>
 
           <div class="contact-actions">
             <a class="btn btn-dark" href="https://wa.me/263788179182" target="_blank" rel="noopener">WhatsApp +263 788 179 182</a>
@@ -617,8 +626,12 @@
 
     playBtn.addEventListener('click', () => {
       if (audio.paused) {
-        audio.play();
-        playBtn.textContent = '❚❚';
+        audio.play().then(() => {
+          playBtn.textContent = '❚❚';
+        }).catch(() => {
+          time.textContent = 'Tap again';
+          playBtn.textContent = '▶';
+        });
       } else {
         audio.pause();
         playBtn.textContent = '▶';
